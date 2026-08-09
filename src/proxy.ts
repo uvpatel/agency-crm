@@ -1,16 +1,14 @@
-// proxy.ts
-import { auth } from "@/lib/auth"
-import type { NextRequest } from "next/server"
-import { NextResponse } from "next/server"
+import { clerkMiddleware } from '@clerk/nextjs/server';
 
-export default auth((req: NextRequest) => {
-  const isLoggedIn = !!req.auth
-  const isDashboardRoute = req.nextUrl.pathname.startsWith("/dashboard")
+export default clerkMiddleware();
 
-  if (!isLoggedIn && isDashboardRoute) {
-    const loginUrl = new URL("/login", req.url)
-    return NextResponse.redirect(loginUrl)
-  }
-
-  return NextResponse.next()
-})
+export const config = {
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for Clerk's auto-proxy path
+    '/__clerk/:path*',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
+  ],
+};
