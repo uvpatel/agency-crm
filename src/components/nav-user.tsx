@@ -94,17 +94,17 @@ export function NavUser({
               <DropdownMenuItem>
                 <CircleUserRoundIcon
                 />
-                Account
+                <Link href="/account"> Account</Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <CreditCardIcon
                 />
-               <Link href="/billing"> Billing</Link>
+               <Link href="/accounts/billing"> Billing</Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <BellIcon
                 />
-                Notifications
+                <Link href="/notifications"> Notifications</Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />

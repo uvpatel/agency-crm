@@ -15,7 +15,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, CameraIcon, FileTextIcon, Settings2Icon, CircleHelpIcon, SearchIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, CommandIcon } from "lucide-react"
+import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, CameraIcon, FileTextIcon, Settings2Icon, CircleHelpIcon, SearchIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, CommandIcon, PackageIcon } from "lucide-react"
 
 const data = {
   user: {
@@ -33,16 +33,16 @@ const data = {
       ),
     },
     {
-      title: "Lifecycle",
-      url: "/lifecycle",
+      title: "Leads",
+      url: "/leads",
       icon: (
         <ListIcon
         />
       ),
     },
     {
-      title: "Analytics",
-      url: "/anlytics",
+      title: "Clients",
+      url: "/clients",
       icon: (
         <ChartBarIcon
         />
@@ -62,6 +62,15 @@ const data = {
       icon: (
         <UsersIcon
         />
+      ),
+    },
+    {
+      title: "Invoice",
+      url: "/invoice",
+      icon: (
+        <FileChartColumnIcon
+        />
+        
       ),
     },
   ],
@@ -148,12 +157,12 @@ const data = {
       ),
     },
   ],
-  documents: [
+  manages: [
     {
-      name: "Data Library",
-      url: "/data-library",
+      name: "Services",
+      url: "/services",
       icon: (
-        <DatabaseIcon
+        <PackageIcon
         />
       ),
     },
@@ -165,14 +174,7 @@ const data = {
         />
       ),
     },
-    {
-      name: "Word Assistant",
-      url: "/word-assistant",
-      icon: (
-        <FileIcon
-        />
-      ),
-    },
+    
   ],
 }
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -193,7 +195,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
+        <NavDocuments items={data.manages} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
